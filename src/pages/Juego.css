@@ -1,0 +1,51 @@
+/* JUEGO */
+.juego{
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+.botones-juego {
+    /* background-color: red; */
+    width: 100%;
+    /* height: calc(100vh - 200px); */
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.botones-juego .link-juegos {
+    max-height: 200px;
+    min-width: 180px;
+    margin: 6rem 2rem;
+    padding: 3rem;
+    width: 400px;
+    font-size: 2rem;
+    background-color: transparent;
+    border: 2px solid var(--main-color);
+    cursor: pointer;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+}
+
+.botones-juego .link-juegos:hover {
+    background-color: var(--main-color);
+    box-shadow: 0 0 100px var(--main-color);
+    border: none;
+}
+
+@media screen and (max-width: 660px) {
+    .botones-juego {
+        flex-direction: column;
+    }
+
+    .botones-juego .link-juegos{
+        font-size: 1.5rem;
+        margin: 2rem auto;
+        width: 50%;
+        /* min-width: 10px; */
+    }
+}

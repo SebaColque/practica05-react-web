@@ -1,0 +1,52 @@
+.juego-default{
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+.box-cajas {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    min-width: 660px;
+    gap: 1rem;
+    margin: 3rem auto;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.box-cajas >* img {
+    width: 150px;
+    height: 150px;
+}
+
+
+.contador-errores {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* PANTALLA TAPAR */
+.tapar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+}
+
+@media screen and (max-width: 700px) {
+    .box-cajas {
+        min-width: min-content;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .box-cajas >* img {
+        width: 150px;
+        height: 100px;
+    }
+}

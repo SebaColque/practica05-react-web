@@ -1,0 +1,94 @@
+/* CHARACTER CARD */
+.flip-card {
+    background-color: transparent;
+    width: 200px;
+    height: 260px;
+    padding: 1rem;
+    margin: 0 auto;
+    border-radius: 1rem;
+    font-size: 1rem;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.flip-card >* img {
+    width: 100%;
+    height: auto;
+}
+
+.flip-card.humano {
+    box-shadow: 0 0 10px rgba(58, 141, 58, 0.6);
+}
+
+.flip-card.alien {
+    box-shadow: 0 0 10px rgba(187, 49, 49, 0.6);
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flip-card-front h3{
+    padding-bottom: 1rem;
+    background-color: transparent;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background-color: var(--main-color);
+    box-shadow: 0 0 30px 0px var(--main-color);
+    color: black;
+    transform: rotateY(180deg);
+    border-radius: 1rem;
+}
+
+.flip-card-back h3 {
+    color: white;
+}
+
+@media screen and (max-width: 660px) {
+    .flip-card {
+        font-size: 0.8rem;
+        width: 130px;
+        height: 190px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .flip-card {
+        font-size: 0.5rem;
+        width: 80px;
+        height: 140px;
+    }
+}
