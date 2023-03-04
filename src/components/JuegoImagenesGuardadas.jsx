@@ -9,7 +9,7 @@ const JuegoImagenesGuardadas = ({closeModal, handleCargarImg}) => {
 
     const nombresLocalStorage = [];
 
-    for(let i=0; i<localStorage.length; i++) nombresLocalStorage.push(localStorage.key(i));
+    for(let i=0; i<localStorage.length; i++) localStorage.key(i).includes('theme') ? null : nombresLocalStorage.push(localStorage.key(i));
 
     const handleClick = (e) => {
         e.stopPropagation()
@@ -38,7 +38,7 @@ const JuegoImagenesGuardadas = ({closeModal, handleCargarImg}) => {
           <button className='btn-eliminar-set' onClick={handleRemove}>X</button>
         </div>
         )}
-        {localStorage.length===0 && <h3>No hay imagenes guardadas</h3>}
+        {nombresLocalStorage.length===0 && <h3>No hay imagenes guardadas</h3>}
     </div>
   )
 }

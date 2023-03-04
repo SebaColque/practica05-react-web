@@ -53,7 +53,7 @@ const CharacterSearch = ({setSearch, setAllCharacters, setPageNumber}) => {
         </span>
         <form onSubmit={handleSubmit}>
             <label htmlFor="nombre" style={{fontWeight:"bolder", textTransform:"uppercase"}}>Nombre</label>
-            <input type="text" name="nombre" id="nombre" value={form.nombre} onChange={handleChange} placeholder="Nombre del personaje"/>
+            <input type="text" name="nombre" id="nombre" value={form.nombre} onChange={handleChange} placeholder="Nombre del personaje" autoComplete='off'/>
 
             <hr />
 
