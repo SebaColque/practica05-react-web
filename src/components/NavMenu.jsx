@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ThemeContext from '../context/ThemeContext';
 import './NavMenu.css';
+import portalLogo from '../assets/portal-rick-and-morty-imagen.webp';
 
 
 const NavMenu = () => {
@@ -34,7 +35,12 @@ const NavMenu = () => {
         <nav className='nav-menu'>
             <div className="logo">
                 < Link to="/" activeclassname='active'>
-                    <img src="/src/assets/portal-rick-and-morty-imagen.webp" alt="Imagen portal home" />
+                    <img src={portalLogo} alt="Imagen portal home" />
+                    {/* <img src='../assets/portal-rick-and-morty-imagen.png' alt="Imagen portal home 2" />
+                    <img src='../assets/portal-rick-and-morty-imagen.webp' alt="Imagen portal home 3" />
+                    <img src='/src/assets/portal-rick-and-morty-imagen.png' alt="Imagen portal home 4" />
+                    <img src='src/assets/portal-rick-and-morty-imagen.png' alt="Imagen portal home 5" />
+                    <img src='portal-rick-and-morty-imagen-copy.webp' alt="Imagen portal home 6" /> */}
                 </Link>
             </div>
             <div className={`links-menu ${menuOpen && 'responsive-menu'}`} >
