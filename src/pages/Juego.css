@@ -5,19 +5,19 @@
 }
 
 .botones-juego {
-    /* background-color: red; */
     width: 100%;
-    /* height: calc(100vh - 200px); */
+    height: 200px;
+    margin-top: 20px;
     display: flex;
     align-content: center;
     justify-content: center;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .botones-juego .link-juegos {
     max-height: 200px;
     min-width: 180px;
-    margin: 6rem 2rem;
+    margin: 2rem 2rem;
     padding: 3rem;
     width: 400px;
     font-size: 2rem;
@@ -37,15 +37,34 @@
     border: none;
 }
 
+.decoracion{
+    width: 100%;
+}
+
 @media screen and (max-width: 660px) {
     .botones-juego {
         flex-direction: column;
+        margin-top: 15vh;
     }
 
     .botones-juego .link-juegos{
         font-size: 1.5rem;
         margin: 2rem auto;
+        padding: 2rem;
         width: 50%;
-        /* min-width: 10px; */
+    }
+
+    .decoracion{
+        position: absolute;
+        bottom: 0px;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .decoracion img{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: -70px;
     }
 }

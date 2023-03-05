@@ -71,6 +71,8 @@ header div{
     align-items: center;
     box-shadow: 0 0 20px var(--main-color);
     width: 80%;
+    /* min-width: 1400px; */
+    /* height: 400px; */
     border-radius: 20px;
     margin-top: 40px;
     padding: 40px;
@@ -137,11 +139,16 @@ footer hr{
 
 .redes{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 50px;
     font-size: 30px;
+}
+
+.redes p{
+    font-size: 1rem;
 }
 
 @media screen and (max-width: 768px){

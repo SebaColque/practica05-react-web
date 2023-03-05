@@ -79,7 +79,7 @@ const Inicio = () => {
         </div>
 
         <div className="proyectos">
-          <h2>Proyectos</h2>
+          <h2>Proyectos en esta Web</h2>
 
           <div className="contenedor-proyectos">
             <div className="proyecto proyecto1" onMouseEnter={handleProyectoEnter} onMouseLeave={handleProyectoLeave}>
@@ -94,7 +94,7 @@ const Inicio = () => {
       </main>
 
       <footer>
-        <p>Pagina creada por Seba Colque</p>
+        <p>Pagina creada por Sebastián Colque</p>
         <hr />
 
         <div className="redes">
@@ -107,7 +107,7 @@ const Inicio = () => {
           <a href="https://github.com/SebaColque" target="_blank" rel="noreferrer">
             <i className="bi bi-github"></i>
           </a>
-          
+          <p>sebacolque06@gmail.com</p>
         </div>
       </footer>
 

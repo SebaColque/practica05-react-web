@@ -17,7 +17,7 @@ a{
 }
 
 .active{
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(70, 184, 70, 0.3);
     border-radius: 1rem;
     padding: 0.5rem 1rem;
 }

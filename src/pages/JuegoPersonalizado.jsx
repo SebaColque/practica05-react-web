@@ -106,22 +106,24 @@ const JuegoPersonalizado = () => {
 
             {!todasCargadas && < JuegoPersonalizadoDragAndDrop setFiles={setFiles} tituloDragDrop={tituloDragDrop} setTituloDragDrop={setTituloDragDrop}/>}
 
-            <div className="imagenes-cargadas">
+            <div className={`imagenes-cargadas ${theme}`}>
                 {imagenesPerso.length!==0 && imagenesPerso.map((img,index) => <img key={index} src={img} alt="Imagen cargada" className='imagen-cargada'
                                                                                 onClick={() => handleRemove(img)} />)}
             </div>
-
-            <div className="botones-imagenes-cargadas">
-                {todasCargadas && <button className={`btn-juego-perso ${theme}`} onClick={handleJugar}>Jugar</button>}
-                {todasCargadas && <button className={`btn-juego-perso ${theme}`} onClick={openModalGuardar}>Guardar imagenes</button>}
-                < Modal isOpen={isOpenModalGuardar} closeModal={closeModalGuardar} >
-                    <div className="modal-guardar">
-                        <label htmlFor="nombre">Guardar las imagenes con el nombre:</label>
-                        <input type="text" id="nombreSet" placeholder='Nombre...' autoFocus/>
-                        <input type="submit" value="Guardar" onClick={handleSaveImg} />
-                    </div>
-                </Modal>
-            </div>
+            
+            {todasCargadas &&
+            <div className={`botones-imagenes-cargadas ${theme}`}>
+                {<button className={`btn-juego-perso ${theme}`} onClick={handleJugar}>Jugar</button>}
+                { <button className={`btn-juego-perso ${theme}`} onClick={openModalGuardar}>Guardar imagenes</button>}
+                { 
+                    < Modal isOpen={isOpenModalGuardar} closeModal={closeModalGuardar} >
+                        <div className="modal-guardar">
+                            <label htmlFor="nombre">Guardar las imagenes con el nombre:</label>
+                            <input type="text" id="nombreSet" placeholder='Nombre...' autoFocus/>
+                            <input type="submit" value="Guardar" onClick={handleSaveImg} />
+                        </div>
+                    </Modal>}
+            </div>}
 
         </div>
         }

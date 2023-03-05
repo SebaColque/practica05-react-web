@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ThemeContext from '../context/ThemeContext';
 import './Juego.css';
+import waveLine from '../assets/Wave-Line.svg';
 
 const Juego = () => {
   const {theme} = useContext(ThemeContext);
@@ -16,6 +17,9 @@ const Juego = () => {
             < Link to="personalizado" className="link-juegos">
                 Personalizado
             </Link>
+        </div>
+        <div className="decoracion">
+            <img src={waveLine} alt="Decoracion" />
         </div>
     </div>
   )
