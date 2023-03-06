@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import NavMenu from '../components/NavMenu'
-import { BrowserRouter as Router, Routes, Route, Navigate, HashRouter, Link } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Characters from './Characters';
 import { infiniteScroll } from '../helpers/infiniteScroll';
 import Juego from './Juego';
 import JuegoDefault from './JuegoDefault';
 import JuegoPersonalizado from './JuegoPersonalizado';
 import Inicio from './Inicio';
-import ThemeContext, { ThemeProvider } from '../context/ThemeContext';
+import ThemeContext from '../context/ThemeContext';
 
 const Pagina = () => {
   const [endOfPage, setEndOfPage] = useState(false);
@@ -30,6 +30,7 @@ const Pagina = () => {
       $btnTheme.innerText = localTheme==='light_mode' ? 'dark_mode' : 'light_mode';
       handleTheme({target: {innerText: localTheme}});
     }
+    
   }, [])
   
   useEffect(() => {

@@ -1,9 +1,8 @@
-import React, { memo, useContext, useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import CharacterCard from '../components/CharacterCard';
 import CharacterSearch from '../components/CharacterSearch';
 import ErrorInternet from '../components/ErrorInternet';
 import Loader from '../components/Loader';
-import ThemeContext from '../context/ThemeContext';
 import './Characters.css'
 
 
@@ -19,10 +18,7 @@ const Characters = ({endOfPage, setEndOfPage}) => {
 
     const [goUp, setGoUp] = useState(false);
 
-    const {theme} = useContext(ThemeContext);
-
-    let url = "https://rickandmortyapi.com/api/character",
-        cargar = false;
+    let url = "https://rickandmortyapi.com/api/character";
 
     const getCharacter = async (url) => {
         try{
@@ -47,20 +43,18 @@ const Characters = ({endOfPage, setEndOfPage}) => {
     }
 
     useEffect(() => {
-        if(allCharacters.length === 0){
-            getCharacter(url);
-        }
+        if(allCharacters.length === 0) getCharacter(url);
     }, [allCharacters])
 
     useEffect(() => {
         if(nextPage) getCharacter(nextPage);
-        if(nextPage===null) cargar = true;
 
         if(endOfPage){
             setPageNumber(pageNumber + 10);
             setEndOfPage(false);
         }
     }, [nextPage, endOfPage])
+
 
     const subir = () => {
         window.scrollTo({
@@ -74,7 +68,6 @@ const Characters = ({endOfPage, setEndOfPage}) => {
         window.scrollY >= 100 ? setGoUp(true) : setGoUp(false);
     })
 
-    
 
   return (
     <div>
