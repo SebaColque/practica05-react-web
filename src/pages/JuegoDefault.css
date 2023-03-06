@@ -1,5 +1,6 @@
 .juego-default{
     height: calc(100vh - 80px);
+    /* height: 100vh; */
     overflow: hidden;
 }
 
@@ -47,6 +48,17 @@
 @media screen and (max-width: 400px) {
     .box-cajas >* img {
         width: 150px;
+        height: 100px;
+    }
+}
+
+@media screen and (max-height: 520px) {
+    .box-cajas{
+        margin: 10px auto;
+    }
+
+    .box-cajas >* img {
+        width: 100px;
         height: 100px;
     }
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useModal } from '../hooks/useModal';
 import JuegoDefault from './JuegoDefault';
 import JuegoImagenesGuardadas from '../components/JuegoImagenesGuardadas';
@@ -18,7 +18,9 @@ const JuegoPersonalizado = () => {
     const [files, setFiles] = useState([]);
     const [tituloDragDrop, setTituloDragDrop] = useState('');
 
-    const {theme} = useContext(ThemeContext)
+    const {theme} = useContext(ThemeContext);
+    
+    const inputNombreSet = useRef();
     
     const handleRemove = (img) => {
         const newImgs = imagenesPerso.filter(image => image !== img);
@@ -28,9 +30,12 @@ const JuegoPersonalizado = () => {
     const handleJugar = () => setJugar(true);
 
     const handleSaveImg = () => {
-        const $input = document.getElementById('nombreSet');
+        const $input = inputNombreSet.current;
         const nombre = $input.value;
-        localStorage.setItem(nombre, JSON.stringify(imagenesPerso));
+
+        if(nombre)localStorage.setItem(nombre, JSON.stringify(imagenesPerso))
+        else return
+
         closeModalGuardar();
     }
 
@@ -119,7 +124,7 @@ const JuegoPersonalizado = () => {
                     < Modal isOpen={isOpenModalGuardar} closeModal={closeModalGuardar} >
                         <div className="modal-guardar">
                             <label htmlFor="nombre">Guardar las imagenes con el nombre:</label>
-                            <input type="text" id="nombreSet" placeholder='Nombre...' autoFocus/>
+                            <input type="text" ref={inputNombreSet} placeholder='Nombre...' autoFocus/>
                             <input type="submit" value="Guardar" onClick={handleSaveImg} />
                         </div>
                     </Modal>}

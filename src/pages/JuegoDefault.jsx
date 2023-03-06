@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { JuegoCarta } from '../components/JuegoCarta'
 import JuegoDificultad from '../components/JuegoDificultad';
 import { Winner } from '../components/Winner';
@@ -15,6 +15,8 @@ const JuegoDefault = ({imagenesPerso}) => {
     const [click, setClick] = useState(false);
 
     const {theme} = useContext(ThemeContext)
+
+    const cartaFlipeable = useRef();
 
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -122,7 +124,8 @@ const JuegoDefault = ({imagenesPerso}) => {
         <>
             <div className="box-cajas">
                 {imgs.map((el, index) => < JuegoCarta key={index} img={el} 
-                                                            orden={orden[index]} handleClick={handleClick} />)}
+                                                            orden={orden[index]} handleClick={handleClick} 
+                                                            cartaFlipeable={cartaFlipeable} />)}
             </div>
             <h4 className='contador-errores'>Errores: {errores}</h4>
         </>

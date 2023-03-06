@@ -7,18 +7,18 @@ const ThemeProvider = ({children}) => {
     const [theme, setTheme] = useState(initialTheme);
 
     const handleTheme = (e) => {
-        const $range_theme = document.getElementById('range-theme');
+        const $rangeTheme = document.getElementById('range-theme');
 
         if(e.target.innerText === 'light_mode'){
             e.target.innerText = 'dark_mode';
             setTheme('light_mode');
             window.localStorage.setItem('theme', 'light_mode');
-            $range_theme.value = 9;
+            $rangeTheme.value = 9;
         } else {
             e.target.innerText = 'light_mode';
             setTheme('dark_mode');
             window.localStorage.setItem('theme', 'dark_mode');
-            $range_theme.value = 0;
+            $rangeTheme.value = 0;
         }
 
     };

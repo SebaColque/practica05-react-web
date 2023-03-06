@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import ThemeContext from '../context/ThemeContext';
 import './JuegoPersonalizadoDragAndDrop.css';
 
@@ -8,8 +8,10 @@ const JuegoPersonalizadoDragAndDrop = ({setFiles, tituloDragDrop, setTituloDragD
 
     const {theme} = useContext(ThemeContext);
 
+    const dropZone = useRef();
+
     useEffect(() => {
-        const $dropZone = document.querySelector('.drop-zone');
+        const $dropZone = dropZone.current;
 
         $dropZone.addEventListener('dragover', e => {
             e.preventDefault();
@@ -34,8 +36,7 @@ const JuegoPersonalizadoDragAndDrop = ({setFiles, tituloDragDrop, setTituloDragD
     }, [])
     
     useEffect(() => {
-        // console.log(tituloDragDrop);
-        const $dropZone = document.querySelector('.drop-zone');
+        const $dropZone = dropZone.current;
         if(tituloDragDrop){
             $dropZone.classList.add('is-error');
             setTituloDropZone(tituloDragDrop)
@@ -51,7 +52,7 @@ const JuegoPersonalizadoDragAndDrop = ({setFiles, tituloDragDrop, setTituloDragD
   return (
     <div>
         <main>
-            <div className={`drop-zone ${theme}`}>
+            <div className={`drop-zone ${theme}`} ref={dropZone}>
                 {<p>{tituloDropZone}</p>}
             </div>
         </main>

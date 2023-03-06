@@ -72,3 +72,10 @@
         height: 100px;
     }
 }
+
+@media screen and (max-height: 520px) {
+    .flip-card-juego{
+        width: 100px;
+        height: 100px;
+    }
+}

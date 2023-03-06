@@ -2,7 +2,7 @@ import React from 'react';
 import './JuegoCarta.css';
 import portalCarta from '../assets/portal-rick-and-morty-imagen.png'
 
-export const JuegoCarta = ({img, orden, handleClick}) => {
+export const JuegoCarta = ({img, handleClick}) => {
 
   return (
     <div className="flip-card-juego" onClick={(e) => handleClick(e, img)}>

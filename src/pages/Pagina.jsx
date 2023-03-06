@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import NavMenu from '../components/NavMenu'
 import { BrowserRouter as Router, Routes, Route, Navigate, HashRouter, Link } from "react-router-dom";
 import Characters from './Characters';
@@ -11,14 +11,19 @@ import ThemeContext, { ThemeProvider } from '../context/ThemeContext';
 
 const Pagina = () => {
   const [endOfPage, setEndOfPage] = useState(false);
-  const {theme, handleTheme, toggleTheme} = useContext(ThemeContext)
+  const {theme, handleTheme, toggleTheme} = useContext(ThemeContext);
+
+  const btnTheme = useRef();
+  const rangeTheme = useRef();
 
   useEffect(() => {
+
     const localTheme = window.localStorage.getItem('theme');
-    const $btnTheme = document.querySelector('.btn-theme');
+    const $btnTheme = btnTheme.current;
+
     if(localTheme && localTheme.includes('color')){
       const valor = localTheme.split('color_mode')[1]
-      document.querySelector('#range-theme').value = valor;
+      rangeTheme.current.value = valor;
       toggleTheme(valor);
       valor > 4 ? $btnTheme.innerText = 'dark_mode' : $btnTheme.innerText = 'light_mode';
     } else{
@@ -34,7 +39,7 @@ const Pagina = () => {
   return (
     <div className={theme} >
         < HashRouter>
-              < NavMenu />
+              < NavMenu btnTheme={btnTheme} rangeTheme={rangeTheme} />
               <Routes>
                   <Route path="/" element={< Inicio />} />
                   

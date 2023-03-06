@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import ThemeContext from '../context/ThemeContext';
 import './Inicio.css';
 import rickInicio from '../assets/rick-inicio.jpg'
@@ -8,46 +8,31 @@ import wave2 from '../assets/Wave2.svg'
 const Inicio = () => {
   const {theme} = useContext(ThemeContext);
 
-  // useEffect(() => {
-  //   const getRespone = async () => {
-  //     try {
-  //       const response = await fetch('http://ec2-3-82-93-203.compute-1.amazonaws.com/api/recipe/ingredients/',
-  //       {
-  //         method: 'GET',
-  //         mode: 'no-cors',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'Authorization': 'gGWkVAaj81qk4d98fB1HgiC2YPAELfQ3PdfFGC1M3CbZlwRW6G8CLR5sOxxtB4H4',
-  //         }
-  //       });
-  //       const data = await response.json();
-  //       console.log(data);
-        
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-
-  //   getRespone();
-  // },[])
+  const contenedorProyectos = useRef();
+  const proyecto1 = useRef();
+  const proyecto2 = useRef();
 
   const handleProyectoEnter = (e) => {
-    document.querySelector('.proyecto2').style.opacity = '0';
-    document.querySelector('.proyecto1').style.opacity = '0';
-    if(e.target.classList.contains('proyecto1')){
-      document.querySelector('.contenedor-proyectos').classList.add('proyecto1-activo')
-    } else if(e.target.classList.contains('proyecto2')){
-      document.querySelector('.contenedor-proyectos').classList.add('proyecto2-activo')
+
+    proyecto1.current.style.opacity = '0';
+    proyecto2.current.style.opacity = '0';
+
+    if(e.target === proyecto1.current){
+      contenedorProyectos.current.classList.add('proyecto1-activo')
+    } else if(e.target === proyecto2.current){
+      contenedorProyectos.current.classList.add('proyecto2-activo')
     }
   }
 
   const handleProyectoLeave = (e) => {
-    document.querySelector('.proyecto1').style.opacity = '1';
-    document.querySelector('.proyecto2').style.opacity = '1';
-    if(e.target.classList.contains('proyecto1')){
-      document.querySelector('.contenedor-proyectos').classList.remove('proyecto1-activo')
-    } else if(e.target.classList.contains('proyecto2')){
-      document.querySelector('.contenedor-proyectos').classList.remove('proyecto2-activo')
+
+    proyecto1.current.style.opacity = '1';
+    proyecto2.current.style.opacity = '1';
+
+    if(e.target === proyecto1.current){
+      contenedorProyectos.current.classList.remove('proyecto1-activo')
+    } else if(e.target === proyecto2.current){
+      contenedorProyectos.current.classList.remove('proyecto2-activo')
     }
   }
 
@@ -81,11 +66,11 @@ const Inicio = () => {
         <div className="proyectos">
           <h2>Proyectos en esta Web</h2>
 
-          <div className="contenedor-proyectos">
-            <div className="proyecto proyecto1" onMouseEnter={handleProyectoEnter} onMouseLeave={handleProyectoLeave}>
+          <div className="contenedor-proyectos" ref={contenedorProyectos} >
+            <div className="proyecto proyecto1" ref={proyecto1} onMouseEnter={handleProyectoEnter} onMouseLeave={handleProyectoLeave}>
               <h3 className='proyecto1'>Consumo de API y Buscador</h3>
             </div>
-            <div className="proyecto proyecto2" onMouseEnter={handleProyectoEnter} onMouseLeave={handleProyectoLeave}>
+            <div className="proyecto proyecto2" ref={proyecto2} onMouseEnter={handleProyectoEnter} onMouseLeave={handleProyectoLeave}>
               <h3 className='proyecto2'>Juego de Memoria</h3>
             </div>
           </div>

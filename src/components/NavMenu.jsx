@@ -5,7 +5,7 @@ import './NavMenu.css';
 import portalLogo from '../assets/portal-rick-and-morty-imagen.webp';
 
 
-const NavMenu = () => {
+const NavMenu = ({btnTheme, rangeTheme}) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const {theme, handleTheme, toggleTheme} = useContext(ThemeContext)
 
@@ -22,10 +22,10 @@ const NavMenu = () => {
         toggleTheme(e.target.value);
 
         if(parseInt(e.target.value) > 4){
-            document.querySelector('.btn-theme').innerText = 'dark_mode';
+            btnTheme.current.innerText = 'dark_mode';
             return;
         } else if(parseInt(e.target.value) <= 4){
-            document.querySelector('.btn-theme').innerText = 'light_mode';
+            btnTheme.current.innerText = 'light_mode';
             return;
         }
     }
@@ -36,11 +36,6 @@ const NavMenu = () => {
             <div className="logo">
                 < Link to="/" activeclassname='active'>
                     <img src={portalLogo} alt="Imagen portal home" />
-                    {/* <img src='../assets/portal-rick-and-morty-imagen.png' alt="Imagen portal home 2" />
-                    <img src='../assets/portal-rick-and-morty-imagen.webp' alt="Imagen portal home 3" />
-                    <img src='/src/assets/portal-rick-and-morty-imagen.png' alt="Imagen portal home 4" />
-                    <img src='src/assets/portal-rick-and-morty-imagen.png' alt="Imagen portal home 5" />
-                    <img src='portal-rick-and-morty-imagen-copy.webp' alt="Imagen portal home 6" /> */}
                 </Link>
             </div>
             <div className={`links-menu ${menuOpen && 'responsive-menu'}`} >
@@ -57,10 +52,10 @@ const NavMenu = () => {
                     close
                 </span>
                 <div className='theme-btns'>
-                    <span className={`material-symbols-outlined btn-theme ${theme}`} onClick={handleTheme}>
+                    <span className={`material-symbols-outlined btn-theme ${theme}`} ref={btnTheme} onClick={handleTheme}>
                         dark_mode
                     </span>
-                    <input type="range" min='0' max='9' id='range-theme' onChange={handleChange}/>
+                    <input type="range" min='0' max='9' id='range-theme' ref={rangeTheme} onChange={handleChange}/>
                 </div>
             </div>
             <span className="material-symbols-outlined btn-menu" onClick={handleMenuResponsive}>
